@@ -1,0 +1,25 @@
+{
+  "name": "charonincentivetoken",
+  "version": "0.0.1",
+  "description": "CIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx hardhat test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charonAMM/incentiveToken.git"
+  },
+  "keywords": [
+    "revolution"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/charonAMM/incentiveToken/issues"
+  },
+  "homepage": "https://github.com/charonAMM/incentiveToken#readme",
+  "devDependencies": {
+    "hardhat": "^2.11.2"
+  }
+}
