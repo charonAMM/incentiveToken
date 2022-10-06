@@ -1,13 +1,13 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity 0.8.17;
 
-import "interfaces/IERC20.sol";
-import "Token.sol";
+import "./interfaces/IERC20.sol";
+import "./Token.sol";
 
 //have token that is minted by weekly auction
 // set token to accept, set mint amount / frequency, set contract to send proceeds to
 
-contract Auction{
+contract Auction is Token{
 
     IERC20 public token;
     uint256 public mintAmount;
@@ -22,14 +22,19 @@ contract Auction{
     //events
     event NewTopBid(address _bidder, uint256 _amount);
     event AuctionClosed(address _winner, uint256 _amount);
-    event NewAuctionStarted(uint256 _endDate)
+    event NewAuctionStarted(uint256 _endDate);
 
-    constructor(address _token, uint256 _mintAmount, uint256 _auctionFrequency, address _cfc){
+    constructor(address _token,
+                uint256 _mintAmount,
+                uint256 _auctionFrequency,
+                address _cfc,
+                string memory _name,
+                string memory _symbol) Token(_name,_symbol){
         token = IERC20(_token);
         mintAmount = _mintAmount;
         auctionFrequency = _auctionFrequency;
         charonFeeContract = _cfc;
-        endDate = block.timestamp += _auctionFrequency;
+        endDate = block.timestamp + _auctionFrequency;
     }
 
     function bid(uint256 _amount) external{
@@ -44,8 +49,7 @@ contract Auction{
         emit NewTopBid(msg.sender, _amount);
     }
 
-
-    function startNewAuction(){
+    function startNewAuction() external{
         require(block.timestamp >= endDate, "auction must be over");
         _mint(topBidder, mintAmount);
         if(currentTopBid > 0){
@@ -55,8 +59,6 @@ contract Auction{
         endDate = endDate + auctionFrequency; // if no one does this func for a week, you win on zero bids
         topBidder = msg.sender;
         currentTopBid = 0;
-        emit NewTopBid(msg.sender, _amount);
+        emit NewTopBid(msg.sender, 0);
     }
-
-
 }
