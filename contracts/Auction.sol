@@ -29,12 +29,14 @@ contract Auction is Token{
                 uint256 _auctionFrequency,
                 address _cfc,
                 string memory _name,
-                string memory _symbol) Token(_name,_symbol){
+                string memory _symbol,
+                uint256 _initSupply) Token(_name,_symbol){
         token = IERC20(_token);
         mintAmount = _mintAmount;
         auctionFrequency = _auctionFrequency;
         charonFeeContract = _cfc;
         endDate = block.timestamp + _auctionFrequency;
+        _mint(msg.sender,_initSupply);
     }
 
     function bid(uint256 _amount) external{

@@ -21,5 +21,10 @@
   "homepage": "https://github.com/charonAMM/incentiveToken#readme",
   "devDependencies": {
     "hardhat": "^2.11.2"
+  },
+  "dependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.1.1",
+    "chai": "^4.3.6",
+    "web3": "^1.8.0"
   }
 }
