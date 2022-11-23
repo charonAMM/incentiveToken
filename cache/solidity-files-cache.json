@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/nicholasfett/Company/Code/charon/incentiveToken/contracts/Auction.sol": {
-      "lastModificationDate": 1665144894084,
-      "contentHash": "b9c3afa4f71dbf65192536489b214129",
+      "lastModificationDate": 1669226344516,
+      "contentHash": "64918bc5c5d2cb9a2f57f087503b0f85",
       "sourceName": "contracts/Auction.sol",
       "solcConfig": {
         "version": "0.8.17",

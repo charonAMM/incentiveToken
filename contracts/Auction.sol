@@ -9,7 +9,7 @@ import "./Token.sol";
 
 contract Auction is Token{
 
-    IERC20 public token;
+    IERC20 public bidToken;
     uint256 public mintAmount;
     uint256 public auctionFrequency;
     address public charonFeeContract;
@@ -24,14 +24,14 @@ contract Auction is Token{
     event AuctionClosed(address _winner, uint256 _amount);
     event NewAuctionStarted(uint256 _endDate);
 
-    constructor(address _token,
+    constructor(address _bidToken,
                 uint256 _mintAmount,
                 uint256 _auctionFrequency,
                 address _cfc,
                 string memory _name,
                 string memory _symbol,
                 uint256 _initSupply) Token(_name,_symbol){
-        token = IERC20(_token);
+        bidToken = IERC20(_bidToken);
         mintAmount = _mintAmount;
         auctionFrequency = _auctionFrequency;
         charonFeeContract = _cfc;
@@ -42,9 +42,9 @@ contract Auction is Token{
     function bid(uint256 _amount) external{
         require(block.timestamp < endDate, "auction must be ongoing");
         require(_amount > currentTopBid, "must be top bid");
-        require(token.transferFrom(msg.sender,address(this),_amount), "must get tokens");
+        require(bidToken.transferFrom(msg.sender,address(this),_amount), "must get tokens");
         if(currentTopBid > 0){
-            require(token.transfer(topBidder,currentTopBid), "must send back tokens");
+            require(bidToken.transfer(topBidder,currentTopBid), "must send back tokens");
         }
         topBidder = msg.sender;
         currentTopBid = _amount;
@@ -55,7 +55,7 @@ contract Auction is Token{
         require(block.timestamp >= endDate, "auction must be over");
         _mint(topBidder, mintAmount);
         if(currentTopBid > 0){
-            token.transfer(charonFeeContract, currentTopBid);
+            bidToken.transfer(charonFeeContract, currentTopBid);
         }
         emit AuctionClosed(topBidder, currentTopBid);
         endDate = endDate + auctionFrequency; // if no one does this func for a week, you win on zero bids
