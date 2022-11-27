@@ -3,20 +3,17 @@ const web3 = require('web3');
 const { expect, assert } = require("chai");
 const h = require("usingtellor/test/helpers/helpers.js");
 
-
 describe("incentive token - function tests", function() {
-    let incentiveToken,token,accounts;
+    let incentiveToken,token,accounts,tellor,oracle;
     beforeEach(async function () {
         accounts = await ethers.getSigners();
         let fac = await ethers.getContractFactory("MockERC20");
         token = await fac.deploy("mock token", "MT");
         await token.deployed();
-
         fac = await ethers.getContractFactory("Auction");
         incentiveToken = await fac.deploy(token.address,web3.utils.toWei("2000"),86400*7,accounts[1].address,"Charon Incentive Token","CIT",web3.utils.toWei("100000"));
         await incentiveToken.deployed();
     });
-
     it("constructor()", async function() {
         console.log("Auction.sol")
         assert(await incentiveToken.bidToken() == token.address, "token should be set")
