@@ -40,8 +40,8 @@
       ]
     },
     "/Users/nicholasfett/Company/Code/charon/incentiveToken/contracts/interfaces/IERC20.sol": {
-      "lastModificationDate": 1664976870037,
-      "contentHash": "08a486cb896ede478d5f732463f98135",
+      "lastModificationDate": 1669730403503,
+      "contentHash": "8ffcc7ee75b5643fa7bbb7fe8706bc4f",
       "sourceName": "contracts/interfaces/IERC20.sol",
       "solcConfig": {
         "version": "0.8.17",
@@ -110,8 +110,8 @@
       ]
     },
     "/Users/nicholasfett/Company/Code/charon/incentiveToken/contracts/mocks/MockERC20.sol": {
-      "lastModificationDate": 1665017952850,
-      "contentHash": "c183966786d5b979ed9b3d4c02017837",
+      "lastModificationDate": 1669730450604,
+      "contentHash": "99ebbf35f907ec844283d978705020fe",
       "sourceName": "contracts/mocks/MockERC20.sol",
       "solcConfig": {
         "version": "0.8.17",

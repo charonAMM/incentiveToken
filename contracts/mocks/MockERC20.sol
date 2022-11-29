@@ -12,11 +12,11 @@ contract MockERC20 is Token{
     constructor(string memory _name, string memory _symbol) Token(_name,_symbol){
     }
 
-    function mint(address account, uint256 amount) external virtual {
-        _mint(account,amount);
+    function burn(address _account, uint256 _amount) external virtual {
+        _burn(_account,_amount);
     }
 
-    function burn(address account, uint256 amount) external virtual {
-        _burn(account,amount);
+    function mint(address _account, uint256 _amount) external virtual {
+        _mint(_account,_amount);
     }
 }
