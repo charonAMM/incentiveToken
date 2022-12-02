@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/nicholasfett/Company/Code/charon/incentiveToken/contracts/Auction.sol": {
-      "lastModificationDate": 1669226344516,
-      "contentHash": "64918bc5c5d2cb9a2f57f087503b0f85",
+      "lastModificationDate": 1669987247532,
+      "contentHash": "33cb223da059399a4fbb59cd7e6bfcd2",
       "sourceName": "contracts/Auction.sol",
       "solcConfig": {
         "version": "0.8.17",
@@ -30,6 +30,7 @@
       },
       "imports": [
         "./interfaces/IERC20.sol",
+        "./interfaces/ICFC.sol",
         "./Token.sol"
       ],
       "versionPragmas": [
@@ -40,8 +41,8 @@
       ]
     },
     "/Users/nicholasfett/Company/Code/charon/incentiveToken/contracts/interfaces/IERC20.sol": {
-      "lastModificationDate": 1669730403503,
-      "contentHash": "8ffcc7ee75b5643fa7bbb7fe8706bc4f",
+      "lastModificationDate": 1669987669376,
+      "contentHash": "611edfa8b2dea6eb2a3b3505370e250e",
       "sourceName": "contracts/interfaces/IERC20.sol",
       "solcConfig": {
         "version": "0.8.17",
@@ -144,6 +145,78 @@
       ],
       "artifacts": [
         "MockERC20"
+      ]
+    },
+    "/Users/nicholasfett/Company/Code/charon/incentiveToken/contracts/interfaces/ICFC.sol": {
+      "lastModificationDate": 1669987203553,
+      "contentHash": "8ecdbaceb2f9f026ff6a3b6e584dad4c",
+      "sourceName": "contracts/interfaces/ICFC.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ICFC"
+      ]
+    },
+    "/Users/nicholasfett/Company/Code/charon/incentiveToken/contracts/mocks/MockCFC.sol": {
+      "lastModificationDate": 1669987617807,
+      "contentHash": "28ea80bb431ba8e73e4e7e083cad94bf",
+      "sourceName": "contracts/mocks/MockCFC.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IERC20.sol"
+      ],
+      "versionPragmas": [
+        "0.8.17"
+      ],
+      "artifacts": [
+        "MockCFC"
       ]
     }
   }

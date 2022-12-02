@@ -4,14 +4,17 @@ const { expect, assert } = require("chai");
 const h = require("usingtellor/test/helpers/helpers.js");
 
 describe("incentive token - e2e tests", function() {
-    let incentiveToken,token,accounts;
+    let incentiveToken,token,accounts,cfc;
     beforeEach(async function () {
         accounts = await ethers.getSigners();
         let fac = await ethers.getContractFactory("MockERC20");
         token = await fac.deploy("mock token", "MT");
         await token.deployed();
+        fac = await ethers.getContractFactory("MockCFC");
+        cfc = await fac.deploy(token.address,accounts[1].address);
+        await cfc.deployed();
         fac = await ethers.getContractFactory("Auction");
-        incentiveToken = await fac.deploy(token.address,web3.utils.toWei("2000"),86400*7,accounts[1].address,"Charon Incentive Token","CIT",web3.utils.toWei("100000"));
+        incentiveToken = await fac.deploy(token.address,web3.utils.toWei("2000"),86400*7,cfc.address,"Charon Incentive Token","CIT",web3.utils.toWei("100000"));
         await incentiveToken.deployed();
     });
     it("test no bids", async function() {
@@ -81,7 +84,7 @@ describe("incentive token - e2e tests", function() {
         let ed1 = await incentiveToken.endDate()
         await incentiveToken.startNewAuction()
         assert(await incentiveToken.balanceOf(accounts[2].address) - await incentiveToken.mintAmount() == 0, "CIT should be minted")
-        assert(await token.balanceOf(accounts[1].address) == web3.utils.toWei("100"), "CFC should get top bid")
+        assert(await token.balanceOf(cfc.address) == web3.utils.toWei("100"), "CFC should get top bid")
         assert(await incentiveToken.endDate() >= ed1 + 86400 * 7, "endDate should add another week")
         assert(await incentiveToken.topBidder() == accounts[0].address, "msg.sender should be top bidder")
         assert(await incentiveToken.currentTopBid() == 0, "Top bid should be zero")
@@ -99,7 +102,7 @@ describe("incentive token - e2e tests", function() {
         ed1 = await incentiveToken.endDate()
         await incentiveToken.connect(accounts[3]).startNewAuction()
         assert(await incentiveToken.balanceOf(accounts[3].address) - await incentiveToken.mintAmount() == 0, "CIT should be minted")
-        assert(await token.balanceOf(accounts[1].address) == web3.utils.toWei("300"), "CFC should get another top bid")
+        assert(await token.balanceOf(cfc.address) == web3.utils.toWei("300"), "CFC should get another top bid")
         assert(await token.balanceOf(accounts[3].address) == web3.utils.toWei("100"), "should have 200 less tokens")
         assert(await token.balanceOf(accounts[4].address) == web3.utils.toWei("300"), "should have no less tokens")
         assert(await incentiveToken.endDate() >= ed1 + 86400 * 7, "endDate should add another week")
@@ -109,7 +112,7 @@ describe("incentive token - e2e tests", function() {
         await h.advanceTime(86400*7)//7 days
         await incentiveToken.startNewAuction()
         assert(await incentiveToken.balanceOf(accounts[3].address) - 2 * await incentiveToken.mintAmount() == 0, "CIT should be minted")
-        assert(await token.balanceOf(accounts[1].address) == web3.utils.toWei("300"), "CFC should get top bid")
+        assert(await token.balanceOf(cfc.address) == web3.utils.toWei("300"), "CFC should get top bid")
         assert(await token.balanceOf(accounts[3].address) == web3.utils.toWei("100"), "should have 200 less tokens")
         //bid 4
         await token.mint(accounts[5].address, web3.utils.toWei("300"));
@@ -128,7 +131,7 @@ describe("incentive token - e2e tests", function() {
         await h.advanceTime(86400*7)//7 days
         await incentiveToken.startNewAuction()
         assert(await incentiveToken.balanceOf(accounts[7].address) - await incentiveToken.mintAmount() == 0, "CIT should be minted")
-        assert(await token.balanceOf(accounts[1].address) == web3.utils.toWei("450"), "CFC should get top bid")
+        assert(await token.balanceOf(cfc.address) == web3.utils.toWei("450"), "CFC should get top bid")
         assert(await token.balanceOf(accounts[4].address) == web3.utils.toWei("300"), "should have not lost tokens")
         assert(await token.balanceOf(accounts[5].address) == web3.utils.toWei("300"), "should have not lost tokens")
         assert(await token.balanceOf(accounts[7].address) == web3.utils.toWei("150"), "should have 150 less tokens")
@@ -145,7 +148,7 @@ describe("incentive token - e2e tests", function() {
         let ed1 = await incentiveToken.endDate()
         await incentiveToken.startNewAuction()
         assert(await incentiveToken.balanceOf(accounts[2].address) - await incentiveToken.mintAmount() == 0, "CIT should be minted")
-        assert(await token.balanceOf(accounts[1].address) == web3.utils.toWei("200"), "CFC should get top bid")
+        assert(await token.balanceOf(cfc.address) == web3.utils.toWei("200"), "CFC should get top bid")
         assert(await incentiveToken.endDate() >= ed1 + 86400 * 7, "endDate should add another week")
         assert(await incentiveToken.topBidder() == accounts[0].address, "msg.sender should be top bidder")
         assert(await incentiveToken.currentTopBid() == 0, "Top bid should be zero")
