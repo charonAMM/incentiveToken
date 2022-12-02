@@ -21,7 +21,7 @@ describe("incentive token - e2e tests", function() {
         await token.mint(accounts[2].address, web3.utils.toWei("300"));
         await token.connect(accounts[2]).approve(incentiveToken.address,web3.utils.toWei("300"))
         await incentiveToken.connect(accounts[2]).bid(web3.utils.toWei("100"))
-        await expect(incentiveToken.startNewAuction()).to.be.reverted;//auction must be over
+        await h.expectThrow(incentiveToken.startNewAuction())//auction must be over
         await h.advanceTime(86400*7)//7 days
         await incentiveToken.connect(accounts[4]).startNewAuction()
         assert(await token.balanceOf(accounts[4].address) == 0, "No bidder should have no payment tokens")
@@ -40,7 +40,7 @@ describe("incentive token - e2e tests", function() {
         await token.mint(accounts[2].address, web3.utils.toWei("300"));
         await token.connect(accounts[2]).approve(incentiveToken.address,web3.utils.toWei("300"))
         await incentiveToken.connect(accounts[2]).bid(web3.utils.toWei("100"))
-        await expect(incentiveToken.startNewAuction()).to.be.reverted;//auction must be over
+        await h.expectThrow(incentiveToken.startNewAuction())//auction must be over
         await h.advanceTime(86400*7)//7 days
         await incentiveToken.connect(accounts[4]).startNewAuction()
         assert(await token.balanceOf(accounts[4].address) == 0, "No bidder should have no payment tokens")
@@ -79,7 +79,7 @@ describe("incentive token - e2e tests", function() {
         await token.mint(accounts[2].address, web3.utils.toWei("300"));
         await token.connect(accounts[2]).approve(incentiveToken.address,web3.utils.toWei("300"))
         await incentiveToken.connect(accounts[2]).bid(web3.utils.toWei("100"))
-        await expect(incentiveToken.startNewAuction()).to.be.reverted;//auction must be over
+        await h.expectThrow(incentiveToken.startNewAuction());//auction must be over
         await h.advanceTime(86400*7)//7 days
         let ed1 = await incentiveToken.endDate()
         await incentiveToken.startNewAuction()
@@ -88,7 +88,7 @@ describe("incentive token - e2e tests", function() {
         assert(await incentiveToken.endDate() >= ed1 + 86400 * 7, "endDate should add another week")
         assert(await incentiveToken.topBidder() == accounts[0].address, "msg.sender should be top bidder")
         assert(await incentiveToken.currentTopBid() == 0, "Top bid should be zero")
-        await expect(incentiveToken.startNewAuction()).to.be.reverted;//auction must be over
+        await h.expectThrow(incentiveToken.startNewAuction());//auction must be over
         //bid 2
         await token.mint(accounts[3].address, web3.utils.toWei("300"));
         await token.connect(accounts[3]).approve(incentiveToken.address,web3.utils.toWei("300"))
@@ -97,7 +97,7 @@ describe("incentive token - e2e tests", function() {
         await incentiveToken.connect(accounts[3]).bid(web3.utils.toWei("100"))
         await incentiveToken.connect(accounts[4]).bid(web3.utils.toWei("150"))
         await incentiveToken.connect(accounts[3]).bid(web3.utils.toWei("200"))
-        await expect(incentiveToken.startNewAuction()).to.be.reverted;//auction must be over
+        await h.expectThrow(incentiveToken.startNewAuction());//auction must be over
         await h.advanceTime(86400*7)//7 days
         ed1 = await incentiveToken.endDate()
         await incentiveToken.connect(accounts[3]).startNewAuction()
@@ -141,9 +141,9 @@ describe("incentive token - e2e tests", function() {
         await token.mint(accounts[2].address, web3.utils.toWei("300"));
         await token.connect(accounts[2]).approve(incentiveToken.address,web3.utils.toWei("300"))
         await incentiveToken.connect(accounts[2]).bid(web3.utils.toWei("100"))
-        await expect(incentiveToken.connect(accounts[2]).bid(web3.utils.toWei("100"))).to.be.reverted;//auction must be over
+        await h.expectThrow(incentiveToken.connect(accounts[2]).bid(web3.utils.toWei("100")));//auction must be over
         await incentiveToken.connect(accounts[2]).bid(web3.utils.toWei("200"))
-        await expect(incentiveToken.startNewAuction()).to.be.reverted;//auction must be over
+        await h.expectThrow(incentiveToken.startNewAuction());//auction must be over
         await h.advanceTime(86400*7)//7 days
         let ed1 = await incentiveToken.endDate()
         await incentiveToken.startNewAuction()
@@ -152,7 +152,7 @@ describe("incentive token - e2e tests", function() {
         assert(await incentiveToken.endDate() >= ed1 + 86400 * 7, "endDate should add another week")
         assert(await incentiveToken.topBidder() == accounts[0].address, "msg.sender should be top bidder")
         assert(await incentiveToken.currentTopBid() == 0, "Top bid should be zero")
-        await expect(incentiveToken.startNewAuction()).to.be.reverted;//auction must be over
+        await h.expectThrow(incentiveToken.startNewAuction())//auction must be over
         assert(await token.balanceOf(accounts[2].address) == web3.utils.toWei("100"), "should have 200 less tokens")
     });
 });
