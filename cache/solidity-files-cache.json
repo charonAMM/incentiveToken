@@ -76,7 +76,7 @@
       ]
     },
     "/Users/nicholasfett/Company/Code/charon/incentiveToken/contracts/Token.sol": {
-      "lastModificationDate": 1665017669402,
+      "lastModificationDate": 1669987071672,
       "contentHash": "a80654060bc27a6b3d12d4f6299c3e5e",
       "sourceName": "contracts/Token.sol",
       "solcConfig": {
@@ -148,7 +148,7 @@
       ]
     },
     "/Users/nicholasfett/Company/Code/charon/incentiveToken/contracts/interfaces/ICFC.sol": {
-      "lastModificationDate": 1669987203553,
+      "lastModificationDate": 1669987675465,
       "contentHash": "8ecdbaceb2f9f026ff6a3b6e584dad4c",
       "sourceName": "contracts/interfaces/ICFC.sol",
       "solcConfig": {
