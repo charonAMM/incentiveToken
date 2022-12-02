@@ -1,3 +1,5 @@
+[![Tests](https://github.com/charonAMM/incentiveToken/actions/workflows/tests.yml/badge.svg)](https://github.com/charonAMM/incentiveToken/actions/workflows/tests.ymli)
+
 # charon incentive token
 
 <b>Charon</b> is a privacy enabled cross-chain automated market maker (PECCAMM). This is the incentive token to initiate network effects across the system and align motives going forward.  It works by minting a token every month via an auction.  Fees from the auction are sent to charon fee contract for distribution for support of liquidity, user rewards, and oracle payments.  The token generates fees from the charonAMM contracts on each network. 
