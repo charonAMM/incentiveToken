@@ -6,7 +6,7 @@
 
 For more information, check out the tokenomics [whitepaper](https://github.com/charonAMM/writings/blob/main/Charon%20Tokenomics.pdf)
 
-## Setting up and testing
+## setting up and testing
 
 ```sh
 npm i
@@ -14,6 +14,6 @@ npx hardhat compile
 npx hardhat test
 ```
 
-## Donations
+## donations
 
-ETH - 0x92683a09B64148369b09f96350B6323D37Af6AE3
+evm chains - 0x92683a09B64148369b09f96350B6323D37Af6AE3

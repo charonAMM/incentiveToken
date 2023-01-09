@@ -75,6 +75,41 @@
         "IERC20"
       ]
     },
+    "/Users/nicholasfett/Company/Code/charon/incentiveToken/contracts/interfaces/ICFC.sol": {
+      "lastModificationDate": 1669987675465,
+      "contentHash": "8ecdbaceb2f9f026ff6a3b6e584dad4c",
+      "sourceName": "contracts/interfaces/ICFC.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ICFC"
+      ]
+    },
     "/Users/nicholasfett/Company/Code/charon/incentiveToken/contracts/Token.sol": {
       "lastModificationDate": 1669987071672,
       "contentHash": "a80654060bc27a6b3d12d4f6299c3e5e",
@@ -145,41 +180,6 @@
       ],
       "artifacts": [
         "MockERC20"
-      ]
-    },
-    "/Users/nicholasfett/Company/Code/charon/incentiveToken/contracts/interfaces/ICFC.sol": {
-      "lastModificationDate": 1669987675465,
-      "contentHash": "8ecdbaceb2f9f026ff6a3b6e584dad4c",
-      "sourceName": "contracts/interfaces/ICFC.sol",
-      "solcConfig": {
-        "version": "0.8.17",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "ICFC"
       ]
     },
     "/Users/nicholasfett/Company/Code/charon/incentiveToken/contracts/mocks/MockCFC.sol": {
