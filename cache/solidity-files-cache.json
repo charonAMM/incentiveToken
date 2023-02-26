@@ -41,8 +41,8 @@
       ]
     },
     "/Users/nicholasfett/Company/Code/charon/incentiveToken/contracts/interfaces/IERC20.sol": {
-      "lastModificationDate": 1669987669376,
-      "contentHash": "611edfa8b2dea6eb2a3b3505370e250e",
+      "lastModificationDate": 1677413660163,
+      "contentHash": "eac5d7879b5ec5dd9a95d11dba2675d9",
       "sourceName": "contracts/interfaces/IERC20.sol",
       "solcConfig": {
         "version": "0.8.17",
