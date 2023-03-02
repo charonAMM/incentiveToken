@@ -79,7 +79,7 @@ contract Auction is Token{
             charonFeeContract.addFees(currentTopBid,false);
         }
         emit AuctionClosed(topBidder, currentTopBid);
-        endDate = endDate + auctionFrequency; // if no one does this func for a week, you win on zero bids
+        endDate = block.timestamp + auctionFrequency; // just restart it...
         topBidder = msg.sender;
         currentTopBid = 0;
         emit NewTopBid(msg.sender, 0);

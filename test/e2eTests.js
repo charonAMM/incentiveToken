@@ -19,6 +19,7 @@ describe("incentive token - e2e tests", function() {
     });
     it("test no bids", async function() {
         await token.mint(accounts[2].address, web3.utils.toWei("300"));
+        await h.expectThrow(incentiveToken.connect(accounts[2]).bid(web3.utils.toWei("100")))//no approval
         await token.connect(accounts[2]).approve(incentiveToken.address,web3.utils.toWei("300"))
         await incentiveToken.connect(accounts[2]).bid(web3.utils.toWei("100"))
         await h.expectThrow(incentiveToken.startNewAuction())//auction must be over
@@ -65,6 +66,8 @@ describe("incentive token - e2e tests", function() {
         await incentiveToken.connect(accounts[5]).startNewAuction()
         assert(await incentiveToken.balanceOf(accounts[5].address) - 2 * await incentiveToken.mintAmount() == 0, "CIT should be minted")
         assert(await incentiveToken.endDate() >= ed1 + 86400 * 14, "endDate should add another week")
+        await incentiveToken.connect(accounts[2]).bid(web3.utils.toWei("100"))
+        assert(await incentiveToken.topBidder() == accounts[2].address, "msg.sender should be top bidder")
     });
     it("test throw on even bid", async function() {
         await token.mint(accounts[2].address, web3.utils.toWei("300"));
@@ -73,6 +76,8 @@ describe("incentive token - e2e tests", function() {
         await token.mint(accounts[3].address, web3.utils.toWei("300"));
         await token.connect(accounts[3]).approve(incentiveToken.address,web3.utils.toWei("300"))
         await expect(incentiveToken.connect(accounts[3]).bid(web3.utils.toWei("100")))//throw on even amount
+        await incentiveToken.connect(accounts[3]).bid(web3.utils.toWei("101"))
+        assert(await incentiveToken.topBidder() == accounts[3].address, "msg.sender should be top bidder")
     });
     it("test multiple bidders and top switches", async function() {
         //bid 1
@@ -114,6 +119,7 @@ describe("incentive token - e2e tests", function() {
         assert(await incentiveToken.balanceOf(accounts[3].address) - 2 * await incentiveToken.mintAmount() == 0, "CIT should be minted")
         assert(await token.balanceOf(cfc.address) == web3.utils.toWei("300"), "CFC should get top bid")
         assert(await token.balanceOf(accounts[3].address) == web3.utils.toWei("100"), "should have 200 less tokens")
+        assert(await incentiveToken.topBidder() == accounts[0].address, "msg.sender should be top bidder")
         //bid 4
         await token.mint(accounts[5].address, web3.utils.toWei("300"));
         await token.connect(accounts[5]).approve(incentiveToken.address,web3.utils.toWei("300"))
@@ -154,5 +160,7 @@ describe("incentive token - e2e tests", function() {
         assert(await incentiveToken.currentTopBid() == 0, "Top bid should be zero")
         await h.expectThrow(incentiveToken.startNewAuction())//auction must be over
         assert(await token.balanceOf(accounts[2].address) == web3.utils.toWei("100"), "should have 200 less tokens")
+        await h.advanceTime(86400*7)//7 days
+        await incentiveToken.startNewAuction()
     });
 });

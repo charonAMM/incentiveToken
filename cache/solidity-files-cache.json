@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/nicholasfett/Company/Code/charon/incentiveToken/contracts/Auction.sol": {
-      "lastModificationDate": 1669987247532,
-      "contentHash": "33cb223da059399a4fbb59cd7e6bfcd2",
+      "lastModificationDate": 1677767987087,
+      "contentHash": "d64803cff593f88986ca015b6d0aac3b",
       "sourceName": "contracts/Auction.sol",
       "solcConfig": {
         "version": "0.8.17",
@@ -111,8 +111,8 @@
       ]
     },
     "/Users/nicholasfett/Company/Code/charon/incentiveToken/contracts/Token.sol": {
-      "lastModificationDate": 1669987071672,
-      "contentHash": "a80654060bc27a6b3d12d4f6299c3e5e",
+      "lastModificationDate": 1677767131931,
+      "contentHash": "ff2bf544c358f2bd5908df32129c9e38",
       "sourceName": "contracts/Token.sol",
       "solcConfig": {
         "version": "0.8.17",

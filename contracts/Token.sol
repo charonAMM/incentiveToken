@@ -61,7 +61,7 @@ contract Token{
         _move(_from,_to,_amount);
         if (msg.sender != _from) {
             userAllowance[_from][msg.sender] = userAllowance[_from][msg.sender] -  _amount;
-            emit Approval(msg.sender, _to, userAllowance[_from][msg.sender]);
+            emit Approval(_from, msg.sender, userAllowance[_from][msg.sender]);
         }
         return true;
     }
@@ -120,17 +120,6 @@ contract Token{
 
     /**Internal Functions */
     /**
-     * @dev mints tokens
-     * @param _to address of recipient
-     * @param _amount amount of token to send
-     */
-    function _mint(address _to,uint256 _amount) internal {
-        balance[_to] = balance[_to] + _amount;
-        supply = supply + _amount;
-        emit Transfer(address(0), _to, _amount);
-    }
-
-    /**
      * @dev burns tokens
      * @param _from address to burn tokens from
      * @param _amount amount of token to burn
@@ -139,6 +128,17 @@ contract Token{
         balance[_from] = balance[_from] - _amount;//will overflow if too big
         supply = supply - _amount;
         emit Transfer(_from, address(0), _amount);
+    }
+    
+    /**
+     * @dev mints tokens
+     * @param _to address of recipient
+     * @param _amount amount of token to send
+     */
+    function _mint(address _to,uint256 _amount) internal {
+        balance[_to] = balance[_to] + _amount;
+        supply = supply + _amount;
+        emit Transfer(address(0), _to, _amount);
     }
 
     /**
