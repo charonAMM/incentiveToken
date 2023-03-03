@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/nicholasfett/Company/Code/charon/incentiveToken/contracts/Auction.sol": {
-      "lastModificationDate": 1677767987087,
-      "contentHash": "d64803cff593f88986ca015b6d0aac3b",
+      "lastModificationDate": 1677850690685,
+      "contentHash": "ad155ce0ca93cc591db04290a2ca96d6",
       "sourceName": "contracts/Auction.sol",
       "solcConfig": {
         "version": "0.8.17",
@@ -146,8 +146,8 @@
       ]
     },
     "/Users/nicholasfett/Company/Code/charon/incentiveToken/contracts/mocks/MockERC20.sol": {
-      "lastModificationDate": 1669730450604,
-      "contentHash": "99ebbf35f907ec844283d978705020fe",
+      "lastModificationDate": 1677850727379,
+      "contentHash": "27d138cea7a9f37cfc3653c90f3f0580",
       "sourceName": "contracts/mocks/MockERC20.sol",
       "solcConfig": {
         "version": "0.8.17",
@@ -183,8 +183,8 @@
       ]
     },
     "/Users/nicholasfett/Company/Code/charon/incentiveToken/contracts/mocks/MockCFC.sol": {
-      "lastModificationDate": 1669987617807,
-      "contentHash": "28ea80bb431ba8e73e4e7e083cad94bf",
+      "lastModificationDate": 1677850737006,
+      "contentHash": "a3f16daf1450a9f3676550f51106df55",
       "sourceName": "contracts/mocks/MockCFC.sol",
       "solcConfig": {
         "version": "0.8.17",

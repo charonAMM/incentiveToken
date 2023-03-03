@@ -13,12 +13,12 @@ contract Auction is Token{
 
     ICFC public charonFeeContract;
     IERC20 public bidToken;
-    uint256 public auctionFrequency;
-    uint256 public mintAmount;
+    uint256 public auctionFrequency;//auction frequency in seconds
+    uint256 public mintAmount;//mint amount CIT per auction round
 
     //bid variables
     uint256 public currentTopBid;
-    uint256 public endDate;
+    uint256 public endDate;//end date of current auction round
     address public topBidder;
 
     //events

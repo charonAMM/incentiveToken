@@ -8,7 +8,6 @@ import "../interfaces/IERC20.sol";
  @dev a mock contract for interacting wit the CFC
  */
 contract MockCFC{
-
     IERC20 public token;
     IERC20 public chd;
 
