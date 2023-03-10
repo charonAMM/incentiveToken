@@ -14,7 +14,7 @@ describe("incentive token - function tests", function() {
         cfc = await fac.deploy(token.address,accounts[1].address);
         await cfc.deployed();
         fac = await ethers.getContractFactory("Auction");
-        incentiveToken = await fac.deploy(token.address,web3.utils.toWei("2000"),86400*7,cfc.address,"Charon Incentive Token","CIT",web3.utils.toWei("100000"));
+        incentiveToken = await fac.deploy(token.address,web3.utils.toWei("2000"),86400*7,cfc.address,"Charon Incentive Token","CIT");
         await incentiveToken.deployed();
     });
     it("constructor()", async function() {
@@ -24,7 +24,7 @@ describe("incentive token - function tests", function() {
         assert(await incentiveToken.auctionFrequency() == 86400*7, "auction frequency should be set")
         assert(await incentiveToken.charonFeeContract() == cfc.address, "cfc should be set")
         assert(await incentiveToken.endDate() > 0 , "first end date should be set")
-        assert(await incentiveToken.balanceOf(accounts[0].address) == web3.utils.toWei("100000"), "init supply should be minted")
+        assert(await incentiveToken.balanceOf(accounts[0].address) == web3.utils.toWei("2000"), "init supply should be minted")
         assert(await incentiveToken.name() == "Charon Incentive Token", "name should be set")
         assert(await incentiveToken.symbol() == "CIT", "symbol should be set")
     });

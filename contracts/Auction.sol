@@ -35,21 +35,19 @@ contract Auction is Token{
      * @param _cfc address of charon fee contract for passing auction proceeds
      * @param _name string name of CIT token
      * @param _symbol string symbol of CIT token
-     * @param _initSupply init base supply sent to msg.sender
      */
     constructor(address _bidToken,
                 uint256 _mintAmount,
                 uint256 _auctionFrequency,
                 address _cfc,
                 string memory _name,
-                string memory _symbol,
-                uint256 _initSupply) Token(_name,_symbol){
+                string memory _symbol) Token(_name,_symbol){
         bidToken = IERC20(_bidToken);
         mintAmount = _mintAmount;
         auctionFrequency = _auctionFrequency;
         charonFeeContract = ICFC(_cfc);
         endDate = block.timestamp + _auctionFrequency;
-        _mint(msg.sender,_initSupply);
+        _mint(msg.sender,_mintAmount);
     }
 
     /**

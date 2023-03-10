@@ -14,7 +14,7 @@ describe("incentive token - e2e tests", function() {
         cfc = await fac.deploy(token.address,accounts[1].address);
         await cfc.deployed();
         fac = await ethers.getContractFactory("Auction");
-        incentiveToken = await fac.deploy(token.address,web3.utils.toWei("2000"),86400*7,cfc.address,"Charon Incentive Token","CIT",web3.utils.toWei("100000"));
+        incentiveToken = await fac.deploy(token.address,web3.utils.toWei("2000"),86400*7,cfc.address,"Charon Incentive Token","CIT");
         await incentiveToken.deployed();
     });
     it("test no bids", async function() {
